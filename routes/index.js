@@ -3,6 +3,15 @@
  * GET home page.
  */
 
+var crypto = require('crypto');
+
+crypto.randomBytes(64, function(ex,buf) {
+	var cstring = buf.toString('hex');
+})
+
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+	if(!req.session.challengeString) {
+		req.session.challengeString = cstring;
+	}
+	res.render('index', { title: 'Express' });
 };
