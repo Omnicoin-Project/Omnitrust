@@ -9,7 +9,11 @@ var user = require('./routes/user');
 var http = require('http');
 var https = require('https');
 var path = require('path');
-
+var fs = require('fs');
+//var sslPrivKey = fs.readFileSync(path.join('ssl/','server.key'), 'utf8');
+//var sslCert = fs.readFileSync(path.join('ssl/', 'server.crt'), 'utf8');
+//var httpsDetails = { key: sslPrivKey, cert: sslCert };
+//TODO Initialize server with SSL reqs.
 var app = express();
 
 // all environments
@@ -40,6 +44,6 @@ http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
 });
 
-https.createServer(app).listen(app.get('s-port'), function(){
-	console.log('Express secure server listening on port ' + app.get('s-port'));
-});
+//https.createServer(httpsDetails,app).listen(app.get('s-port'), function(){
+//	console.log('Express secure server listening on port ' + app.get('s-port'));
+//});
